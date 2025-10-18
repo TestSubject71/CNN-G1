@@ -9,8 +9,7 @@ import pandas as pd
 
 # Konfigurasi halaman
 st.set_page_config(page_title="CNN Image Classifier", layout="centered")
-st.title("Klasifikasi Gambar Menggunakan CNN")
-st.write("Upload gambar untuk melihat hasil prediksi dari model CNN kamu.")
+
 
 # Fungsi untuk memuat model (gunakan cache agar tidak reload setiap kali)
 @st.cache_resource
@@ -35,6 +34,25 @@ def predict(image):
 
     return prediction
 
+
+st.markdown(
+    """
+    <h1 style='text-align: center; font-family: "Courier New", monospace; color: #4CAF50;'>
+    Aplikasi Klasifikasi Gambar dengan CNN 
+    </h1><br>
+    """,
+    unsafe_allow_html=True
+)
+
+st.divider()
+st.header("Klasifikasi Gambar dengan CNN")
+st.markdown("Unggah gambar Pesawat, Mobil, Burung, Kucing, Rusa, Anjing, Kodok, Kuda, Kapal atau Truk untuk diklasifikasikan menggunakan model CNN sederhana.")
+st.markdown(
+    "<div style='text-align: center;'>"
+    "</div>", unsafe_allow_html=True
+)
+
+
 # Upload file
 uploaded_file = st.file_uploader("Pilih gambar...", type=["jpg", "jpeg", "png"])
 
@@ -43,7 +61,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     
     
-    st.image(image, caption="Gambar yang diunggah", use_column_width=True)
+    st.image(image, caption="Gambar yang diunggah", use_container_width=True)
 
     # BUTTON START PREDICTION
     if st.button("Prediksi Gambar"):
@@ -113,6 +131,12 @@ if uploaded_file is not None:
    
 
 # Footer
-st.markdown("---")
-st.caption("Made With Streamlit")
+st.markdown(
+    """
+    <div style='text-align: center;'>
+    <h3 style='font-family: "Courier New", monospace; color: #4CAF50;'>
+    Made with ❤️ by Group 1
+    """,
+    unsafe_allow_html=True
+)
 
